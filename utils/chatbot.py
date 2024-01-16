@@ -80,7 +80,7 @@ def chatbot():
                 st.session_state.processComplete = True
             else:
                 st.warning("Please upload files")
-                st.stop()
+                # st.stop()
 
         # Section for loading zipped files
         with col2:

@@ -13,3 +13,5 @@ sentence-transformers
 python-docx==0.8.11
 sentencepiece==0.1.99
 faiss-cpu==1.7.4
+qdrant-client
+tokenizers==0.13.3
