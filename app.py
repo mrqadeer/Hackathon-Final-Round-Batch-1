@@ -25,8 +25,8 @@ class MyApp:
         with st.sidebar:
             app = option_menu(
                 menu_title='Chat Zone',
-                options=['Home', 'PDF'],
-                icons=['house-heart', 'file-pdf-fill'],
+                options=['Home', 'Chatbot'],
+                icons=['house-heart', 'chat'],
                 menu_icon='chat-text-fill',
                 default_index=0,
 
@@ -36,7 +36,7 @@ class MyApp:
                     "nav-link": {"color": "white", "font-size": "20px", "text-align": "left", "margin": "0px",
                                  "--hover-color": "magenta"},
                     "nav-link-selected": {"background-color": "#02ab21"}, })
-        if app == "PDF":
+        if app == "Chatbot":
             chatbot()
         if app=="Home":
 

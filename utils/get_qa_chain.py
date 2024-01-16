@@ -17,6 +17,7 @@ class QAChain:
         # Defining Template Prompt of LLM
         prompt_template = """
         **Task:** Extract a precise answer from the given context and question.
+        
         **Strict Instructions:**
         - Answer only based on the provided context.
         - If the answer is not found in the context, respond with "N/A."
