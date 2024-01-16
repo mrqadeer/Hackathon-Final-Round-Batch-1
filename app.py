@@ -8,6 +8,9 @@ st.set_page_config(page_title="Chatbot", page_icon="💬")
 
 
 class MyApp:
+    """
+    This class is main class of this application
+    """
     # Constructor of class
     def __init__(self):
         st.title("Chat with Documents")
@@ -33,7 +36,8 @@ class MyApp:
                 styles={
                     "container": {"padding": "5!important", "background-color": 'black'},
                     "icon": {"color": "white", "font-size": "20px"},
-                    "nav-link": {"color": "white", "font-size": "20px", "text-align": "left", "margin": "0px",
+                    "nav-link": {"color": "white", "font-size": "20px", 
+                                 "text-align": "left", "margin": "0px",
                                  "--hover-color": "magenta"},
                     "nav-link-selected": {"background-color": "#02ab21"}, })
         if app == "Chatbot":
@@ -44,11 +48,10 @@ class MyApp:
                     'Artificial Intelligence Course Batch 1',"Hackathon Final Round"]
             for name in data:
                 st.subheader(name, divider='rainbow')
-            # st.header("")
-            # st.subheader("")
             with st.expander("About the chatbot"):
-                st.markdown("""This chatbot allows you to chat with your documents like MS Word files and PDF 
-                files.This chatbot is designed in way that it can retrieve documents from.""")
+                st.markdown("""This chatbot allows you to chat with your documents 
+                            like MS Word files and PDF files.
+                            This chatbot is designed in way that it can retrieve documents from.""")
 
 
 

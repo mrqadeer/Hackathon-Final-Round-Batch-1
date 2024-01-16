@@ -9,11 +9,10 @@ from utils.helpers import get_collections_names
 from utils.helpers import copy_to_project_folder
 from utils.get_texts import get_text_chunks_recursive, get_vectorstore, get_docx_text, get_pdf_text
 from utils.helpers import custom_files_loader
-
+qa=QAChain() # object of my custom mudoul class for use in file
 load_dotenv()
 
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-
 
 def chatbot():
     """
@@ -38,7 +37,8 @@ def chatbot():
         col1, col2 = st.columns([3, 2])  # 2 columns side by side
 
         with col1:
-            uploaded_files = st.file_uploader("Upload your file", type=['pdf', "docx"], accept_multiple_files=True)
+            uploaded_files = st.file_uploader("Upload your file", 
+                    type=['pdf', "docx"], accept_multiple_files=True)
             process = st.button("Process", key="process")
             if process:
                 # Function that copy uploaded files into directory "data-files"
@@ -76,7 +76,7 @@ def chatbot():
                 no_of_chunks = len(text_chunks_list)
 
                 # create conversation chain
-                st.session_state.conversation = QAChain.get_qa_chain(vectorstore, no_of_chunks)
+                st.session_state.conversation = qa.get_qa_chain(vectorstore, no_of_chunks)
                 st.session_state.processComplete = True
 
         # Section for loading zipped files
@@ -112,8 +112,8 @@ def chatbot():
                     vectorstore = get_vectorstore(text_chunks_list, collection_name)
 
                 # create conversation chain
-
-                st.session_state.conversation = QAChain.get_qa_chain(vectorstore, 4)  # for openAI
+                no_of_chunks = len(text_chunks_list)
+                st.session_state.conversation = qa.get_qa_chain(vectorstore, no_of_chunks)  
 
                 st.session_state.processComplete = True
 

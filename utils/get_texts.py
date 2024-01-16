@@ -1,10 +1,10 @@
+import os
 import streamlit as st
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import Docx2txtLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Qdrant
 from langchain.embeddings import HuggingFaceEmbeddings
-import os
 
 # set up credentials
 qdrant_url = os.getenv("QDRANT_URL")

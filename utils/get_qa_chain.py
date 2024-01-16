@@ -7,7 +7,7 @@ class QAChain:
     """
     A class that represents a chain of question answers chain
     """
-    def get_qa_chain(vectorstore, num_chunks: int):
+    def get_qa_chain(self,vectorstore, num_chunks: int):
         """
         :param vectorstore:This takes a vector store
         :param num_chunks: Number of chunks
@@ -33,12 +33,14 @@ class QAChain:
         # Define PromptTemplate class instance
 
         prompt = PromptTemplate(
-            template=prompt_template, input_variables=["context", "question"], validate_template=False)
+            template=prompt_template, input_variables=["context", "question"], 
+            validate_template=False)
         chain_type_kwargs = {"prompt": prompt}
 
-        qa = RetrievalQA.from_chain_type(llm=ChatOpenAI(model="gpt-3.5-turbo-16k"), chain_type="stuff",
-                                         retriever=vectorstore.as_retriever(search_type="similarity",
-                                                                            search_kwargs={"k": num_chunks}),
-                                         chain_type_kwargs=chain_type_kwargs, return_source_documents=True)
+        qa = RetrievalQA.from_chain_type(llm=ChatOpenAI(model="gpt-3.5-turbo-16k"), 
+                        chain_type="stuff",
+                        retriever=vectorstore.as_retriever(search_type="similarity",
+                        search_kwargs={"k": num_chunks}),
+                        chain_type_kwargs=chain_type_kwargs, return_source_documents=True)
 
         return qa

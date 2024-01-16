@@ -10,7 +10,7 @@ def get_collections_names():
     :return: Just use it and it will generate random collection names
     """
     curr_date = str(datetime.now())
-    date = curr_date.split('.')[0].replace(':', '-')
+    date = curr_date.split('.',maxsplit=1)[0].replace(':', '-')
     random_letters = random.choices(string.ascii_letters, k=4)
     return "".join(random_letters) + date
 
