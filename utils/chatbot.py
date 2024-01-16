@@ -40,7 +40,7 @@ def chatbot():
             uploaded_files = st.file_uploader("Upload your file", 
                     type=['pdf', "docx"], accept_multiple_files=True)
             process = st.button("Process", key="process")
-            if process:
+            if process and len(uploaded_files)>0:
                 # Function that copy uploaded files into directory "data-files"
                 copy_to_project_folder(uploaded_files)
 
@@ -78,6 +78,9 @@ def chatbot():
                 # create conversation chain
                 st.session_state.conversation = qa.get_qa_chain(vectorstore, no_of_chunks)
                 st.session_state.processComplete = True
+            else:
+                st.warning("Please upload files")
+                st.stop()
 
         # Section for loading zipped files
         with col2:
